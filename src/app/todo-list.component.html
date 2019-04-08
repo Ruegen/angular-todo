@@ -1,0 +1,22 @@
+<form class="todo-form" (submit)="addTodo($event)">
+    <input type="text" name="title" />
+</form>
+
+<ul class="todo-list">
+  <li *ngFor="let todo of todos">
+    <button 
+    (click)="toggleTodoComplete(todo.id)"
+    class="button-complete">
+    <span [ngClass]="{'completed': todo.completed}"></span>
+  </button>
+    <input
+      autocomplete="off"
+      [ngClass]="{'completed': todo.completed}"
+      type="text"
+      name="title"
+      value="{{todo.title}}"
+      (input)="updateTodo($event, todo.id)"
+    />
+    <button class="button-delete" (click)="deleteTodo(todo.id)">Delete</button>
+  </li>
+</ul>

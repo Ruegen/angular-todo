@@ -1,0 +1,110 @@
+
+.todo-form {
+    max-width: 25em;
+    min-width: 25em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+
+    input {
+       margin: 0 auto;
+       min-width: 22em;
+       font-size: 1em;
+       color: dimgray;
+    }
+}
+
+
+
+
+.todo-list {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    background: gray;
+    padding: 1em;
+    max-width: 25em;
+    min-width: 25em;
+    box-shadow: inset 0px 0px 2px 0px rgba(0,0,0,0.75);
+
+    li {
+        border: none;
+        border-bottom: .05em dashed white;
+        &:hover > button {
+            opacity: 1;
+        }
+    }
+
+    .button-complete {
+        opacity: 0;
+        width: 1.4em;
+        height: 1.4em;
+        padding: 0;
+        border-radius: 50%;
+        border: .1em solid white; 
+        cursor: pointer;
+        outline: none;
+        background: transparent;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity .3s ease-in-out;
+    }
+
+    .button-complete span {
+        display: inline-block;
+        margin: 0;
+        width: .9em;
+        height: .9em;
+        border-radius: 50%;
+    }
+
+    .button-complete span.completed {
+        background: white;
+    }
+
+    
+
+    input[type="text"] {
+        background: none;
+        font-size: 1em;
+        border: none;
+        outline: none;
+        color: white;
+        box-sizing: border-box;
+        min-height: 1em;
+        min-width: 20em;
+        padding: .3em;
+        &:focus {
+            color: white;
+            background: none;
+            outline: none;
+        }
+    }
+
+
+    button.button-delete {
+        min-height: 1em;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        font-size: .8em;
+        cursor: pointer;
+        outline: none;
+        color: white;
+        background: none;
+        border: none;
+        box-sizing: content-box;
+        &:hover {
+            color: coral;
+        }
+        
+    }
+}
+
+.completed {
+    text-decoration: line-through;
+}
