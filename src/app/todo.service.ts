@@ -7,11 +7,13 @@ import { take } from 'rxjs/operators'
 @Injectable()
 export class TodoService {
   todos:  BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
-  observable: Observable<Todo[]> =  this.todos.asObservable();
 
   getTodos(): Observable<Todo[]> {
     try {
+      
       const todos: Todo[] = JSON.parse(localStorage.getItem('todos'))
+      .map(t => t as Todo) as Todo[]
+      console.log('todos',todos)
       if(!todos) {
         return this.todos
       }
@@ -21,12 +23,13 @@ export class TodoService {
       return this.todos;
     } catch(err) {
       console.log('have no local storage')
+      return this.todos
     }
   }
 
   addTodo(todo: Todo): TodoService {
     this.todos.pipe(take(1)).subscribe(todos => {
-      const updatedTodos = [todo, ...todos]
+      const updatedTodos: Todo[] = [todo, ...todos]
       this.updateLocalStorage(updatedTodos)
       return this.todos.next(updatedTodos)
     })
@@ -35,7 +38,7 @@ export class TodoService {
 
   deleteTodoById(id): TodoService {
     this.todos.pipe(take(1)).subscribe(todos => {
-      const filteredTodos = todos.filter(t => t.id !== id)
+      const filteredTodos: Todo[] = todos.filter(t => t.id !== id)
       this.updateLocalStorage(filteredTodos)
       return this.todos.next(filteredTodos)
     })
@@ -45,10 +48,10 @@ export class TodoService {
  
   updateTodo(id, title): void {
     this.todos.pipe(take(1)).subscribe((todos) => {
-      const todo = todos.find(t => t.id === id)
+      const todo: Todo = todos.find(t => t.id === id)
       if(todo) {
         todo.title = title
-        const newTodos = todos.map(t => (t.id === id ? todo : t))
+        const newTodos: Todo[] = todos.map(t => (t.id === id ? todo : t))
         this.updateLocalStorage(newTodos)
         return this.todos.next(newTodos)
       }
@@ -57,10 +60,10 @@ export class TodoService {
 
   toggleTodoComplete(id): void {
     this.todos.pipe(take(1)).subscribe((todos) => {
-      const todo = todos.find(t => t.id === id)
+      const todo: Todo = todos.find(t => t.id === id)
       if(todo) {
         todo.completed = !todo.completed
-        const newTodos = todos.map(t => (t.id === id ? todo : t))
+        const newTodos: Todo[] = todos.map(t => (t.id === id ? todo : t))
         this.updateLocalStorage(newTodos)
         return this.todos.next(newTodos)
       }
