@@ -32,7 +32,7 @@ describe('Component: AppComponent', () => {
     expect(app.title).toEqual('angular-todo');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should have expected h1 title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
