@@ -3,7 +3,7 @@ import {TodoListComponent} from './todo-list.component'
 import {TodoService} from './todo.service'
 
 
-describe('TodoListComponent', () => {
+describe('Component: TodoListComponent', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
         providers: [

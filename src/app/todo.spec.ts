@@ -1,6 +1,6 @@
 import {Todo} from './todo'
 
-describe('Todo Class', () => {
+describe('Class: Todo Class', () => {
     it('should have a title', () => {
         const todo: Todo = new Todo('Buy Bread')
         expect(todo.title).toBeDefined()

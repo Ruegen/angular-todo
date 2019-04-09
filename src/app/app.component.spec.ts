@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import {TodoListComponent} from './todo-list.component'
 import {TodoService} from './todo.service'
 
-describe('AppComponent', () => {
+describe('Component: AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
